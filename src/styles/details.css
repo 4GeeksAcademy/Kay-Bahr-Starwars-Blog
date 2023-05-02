@@ -1,0 +1,22 @@
+img {
+    float: left;
+    width: 50%;
+}
+
+.detailsFull {
+    text-align: center;
+}
+
+.detailsBody {
+    display: flex;
+    width: 100%;
+}
+
+.detailsProfile {
+    display: inline;
+    width: 50%;
+}
+
+.detailsBio {
+    color: red;
+}

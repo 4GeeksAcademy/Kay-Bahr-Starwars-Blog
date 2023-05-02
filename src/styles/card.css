@@ -2,9 +2,13 @@
     display: flex;
     overflow-x: auto;
     padding-bottom: 20px;
-  }
+}
   
-  .card {
+.card {
     flex: 0 0 18rem;
     margin-right: 1rem;
-  }
+}
+
+.btn-outline-warning {
+    float: right;
+}

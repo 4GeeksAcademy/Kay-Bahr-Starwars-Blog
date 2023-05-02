@@ -31,6 +31,96 @@ const injectContext = PassedComponent => {
 			 * state.actions.loadSomeData(); <---- calling this function from the flux.js actions
 			 *
 			 **/
+			const getPeopleIdFromUrl = (url) => {
+				const matches = url.match(/\/(\d+)\/$/);
+				if (matches) {
+				  return matches[1];
+				}
+				return null;
+			};
+
+			const getStarshipsIdFromUrl = (url) => {
+				const matches = url.match(/\/(\d+)\/$/);
+				if (matches) {
+				  return matches[1];
+				}
+				return null;
+			};
+			  
+			const getPlanetsIdFromUrl = (url) => {
+				const matches = url.match(/\/(\d+)\/$/);
+				if (matches) {
+				  return matches[1];
+				}
+				return null;
+			};
+			  
+
+			const fetchPeople = async () => {
+				try {
+					const response = await fetch('https://swapi.dev/api/people/');
+					const data = await response.json();
+					const peopleWithIds = data.results.map(person => ({
+						...person,
+						id: getPeopleIdFromUrl(person.url)
+					}));
+					setState(prevState => ({
+						...prevState,
+						store: {
+							...prevState.store,
+							people: peopleWithIds
+						}
+					}));
+				} catch (error) {
+					console.error('Error fetching people', error);
+				}
+			};
+			
+            
+            const fetchStarships = async () => {
+				try {
+					const response = await fetch('https://swapi.dev/api/starships/');
+					const data = await response.json();
+					const starshipsWithIds = data.results.map(ship => ({
+						...ship,
+						id: getStarshipsIdFromUrl(ship.url)
+					}));
+					setState(prevState => ({
+						...prevState,
+						store: {
+							...prevState.store,
+							ship: starshipsWithIds
+						}
+					}));
+				} catch (error) {
+					console.error('Error fetching starships', error);
+				}
+			};
+			
+            
+			const fetchPlanets = async () => {
+				try {
+					const response = await fetch('https://swapi.dev/api/planets/');
+					const data = await response.json();
+					const planetsWithIds = data.results.map(planet => ({
+						...planet,
+						id: getPlanetsIdFromUrl(planet.url)
+					}));
+					setState(prevState => ({
+						...prevState,
+						store: {
+							...prevState.store,
+							planet: planetsWithIds
+						}
+					}));
+				} catch (error) {
+					console.error('Error fetching planets', error);
+				}
+			};
+			
+            fetchPeople();
+            fetchStarships();
+            fetchPlanets();
 		}, []);
 
 		// The initial value for the context is not null anymore, but the current state of this component,
