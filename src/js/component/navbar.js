@@ -1,7 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-export const Navbar = () => {
+export const Navbar = ({ favorites, removeFromFavorites }) => {
+
 	return (
 		<nav className="navbar navbar-light bg-light mb-3">
 			<Link to="/">
@@ -13,9 +14,14 @@ export const Navbar = () => {
 						Favorites
 					</button>
 					<ul className="dropdown-menu">
-						<li><a className="dropdown-item" href="#">Action</a></li>
-						<li><a className="dropdown-item" href="#">Another action</a></li>
-						<li><a className="dropdown-item" href="#">Something else here</a></li>
+  						{favorites && favorites.map((title) => (
+    					<li key={title}>
+      						<span className="dropdown-item">{title}</span>
+      						<button className="btn btn-link" onClick={() => removeFromFavorites(title)}>
+        						<i className="far fa-trash-alt"></i>
+      						</button>
+    					</li>
+  						))}
 					</ul>
 				</div>
 			</div>

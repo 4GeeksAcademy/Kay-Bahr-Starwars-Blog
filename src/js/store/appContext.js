@@ -8,19 +8,40 @@ export const Context = React.createContext(null);
 // https://github.com/4GeeksAcademy/react-hello-webapp/blob/master/src/js/layout.js#L35
 const injectContext = PassedComponent => {
 	const StoreWrapper = props => {
-		//this will be passed as the contenxt value
 		const [state, setState] = useState(
-			getState({
-				getStore: () => state.store,
-				getActions: () => state.actions,
-				setStore: updatedStore =>
-					setState({
-						store: Object.assign(state.store, updatedStore),
-						actions: { ...state.actions }
-					})
-			})
+		  getState({
+			getStore: () => state.store,
+			getActions: () => state.actions,
+			setStore: updatedStore =>
+			  setState({
+				store: Object.assign(state.store, updatedStore),
+				actions: { ...state.actions }
+			  })
+		  })
 		);
-
+	  
+		const addToFavorites = (title) => {
+		  setState({
+			store: { ...state.store, favorites: [...state.store.favorites, title] },
+			actions: { ...state.actions }
+		  });
+		};
+	  
+		const removeFromFavorites = (title) => {
+		  setState({
+			store: { ...state.store, favorites: state.store.favorites.filter((t) => t !== title) },
+			actions: { ...state.actions }
+		  });
+		};
+	  
+		const stateContext = {
+		  store: state.store,
+		  actions: {
+			addToFavorites,
+			removeFromFavorites
+		  }
+		};
+		
 		useEffect(() => {
 			/**
 			 * EDIT THIS!
@@ -31,6 +52,7 @@ const injectContext = PassedComponent => {
 			 * state.actions.loadSomeData(); <---- calling this function from the flux.js actions
 			 *
 			 **/
+
 			const getPeopleIdFromUrl = (url) => {
 				const matches = url.match(/\/(\d+)\/$/);
 				if (matches) {
@@ -42,7 +64,7 @@ const injectContext = PassedComponent => {
 			const getStarshipsIdFromUrl = (url) => {
 				const matches = url.match(/\/(\d+)\/$/);
 				if (matches) {
-				  return matches[1];
+				  return matches[2];
 				}
 				return null;
 			};
