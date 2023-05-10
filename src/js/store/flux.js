@@ -1,18 +1,6 @@
 const getState = () => {
 	return {
 	  store: {
-		demo: [
-		  {
-			title: "FIRST",
-			background: "white",
-			initial: "white",
-		  },
-		  {
-			title: "SECOND",
-			background: "white",
-			initial: "white",
-		  },
-		],
 		people: [],
 		starships: [],
 		planets: [],
@@ -48,14 +36,6 @@ const getState = () => {
 			  });
 			})
 			.catch((error) => console.error("Error fetching data", error));
-		},
-		changeColor: (index, color) => {
-		  const store = this.getStore();
-		  const demo = store.demo.map((elm, i) => {
-			if (i === index) elm.background = color;
-			return elm;
-		  });
-		  this.setStore({ demo: demo });
 		},
 		addToFavorites: (item) => {
 		  const store = this.getStore();
