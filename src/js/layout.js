@@ -17,8 +17,8 @@ const Layout = () => {
 
 	const [favorites, setFavorites] = useState([]);
 
-  	const removeFromFavorites = (title) => {
-    setFavorites(favorites.filter((t) => t !== title));
+  	const removeFromFavorites = item => {
+    setFavorites(favorites.filter(i => i !== item));
   	};
 
 	return (

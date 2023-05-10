@@ -1,45 +1,75 @@
-const getState = ({ getStore, getActions, setStore }) => {
+const getState = () => {
 	return {
-		store: {
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			]
+	  store: {
+		demo: [
+		  {
+			title: "FIRST",
+			background: "white",
+			initial: "white",
+		  },
+		  {
+			title: "SECOND",
+			background: "white",
+			initial: "white",
+		  },
+		],
+		people: [],
+		starships: [],
+		planets: [],
+		favorites: [],
+	  },
+	  actions: {
+		exampleFunction: () => {
+		  this.changeColor(0, "green");
 		},
-		actions: {
-			// Use getActions to call a function within a fuction
-			exampleFunction: () => {
-				getActions().changeColor(0, "green");
-			},
-			loadSomeData: () => {
-				/**
-					fetch().then().then(data => setStore({ "foo": data.bar }))
-				*/
-			},
-			changeColor: (index, color) => {
-				//get the store
-				const store = getStore();
-
-				//we have to loop the entire demo array to look for the respective index
-				//and change its color
-				const demo = store.demo.map((elm, i) => {
-					if (i === index) elm.background = color;
-					return elm;
-				});
-
-				//reset the global store
-				setStore({ demo: demo });
-			}
-		}
+		loadSomeData: () => {
+		  Promise.all([
+			fetch("https://swapi.dev/api/people/").then((res) => res.json()),
+			fetch("https://swapi.dev/api/starships/").then((res) => res.json()),
+			fetch("https://swapi.dev/api/planets/").then((res) => res.json()),
+		  ])
+			.then(([people, starships, planets]) => {
+			  const peopleWithIds = people.results.map((person) => ({
+				...person,
+				id: person.url.match(/\/(\d+)\/$/)[1],
+			  }));
+			  const starshipsWithIds = starships.results.map((ship) => ({
+				...ship,
+				id: ship.url.match(/\/(\d+)\/$/)[1],
+			  }));
+			  const planetsWithIds = planets.results.map((planet) => ({
+				...planet,
+				id: planet.url.match(/\/(\d+)\/$/)[1],
+			  }));
+			  this.setStore({
+				people: peopleWithIds,
+				starships: starshipsWithIds,
+				planets: planetsWithIds,
+			  });
+			})
+			.catch((error) => console.error("Error fetching data", error));
+		},
+		changeColor: (index, color) => {
+		  const store = this.getStore();
+		  const demo = store.demo.map((elm, i) => {
+			if (i === index) elm.background = color;
+			return elm;
+		  });
+		  this.setStore({ demo: demo });
+		},
+		addToFavorites: (item) => {
+		  const store = this.getStore();
+		  const favorites = [...store.favorites, item];
+		  this.setStore({ favorites: favorites });
+		},
+		removeFromFavorites: (item) => {
+		  const store = this.getStore();
+		  const favorites = store.favorites.filter((i) => i !== item);
+		  this.setStore({ favorites: favorites });
+		},
+	  },
 	};
-};
-
-export default getState;
+  };
+  
+  export default getState;
+  

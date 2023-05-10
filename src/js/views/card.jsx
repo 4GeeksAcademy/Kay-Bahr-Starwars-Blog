@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/card.css";
 
-export const Card = ({ title, description, url, isFavorite }) => {
+export const Card = ({ title, description, url }) => {
   const { actions } = useContext(Context);
 
   const handleAddToFavorites = () => {

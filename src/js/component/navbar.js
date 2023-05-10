@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Favorites from './favorite.jsx';
+import { Favorites } from './favorites.jsx';
 
 export const Navbar = () => {
 

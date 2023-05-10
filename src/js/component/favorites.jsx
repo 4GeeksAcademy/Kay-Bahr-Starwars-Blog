@@ -1,9 +1,9 @@
 import React, { useContext } from "react";
 import { Link } from 'react-router-dom';
-import { StoreContext } from "../store/appContext";
+import { stateContext } from "../store/appContext";
 
 export const Favorites = () => {
-    const { state } = useContext(StoreContext);
+    const { state } = useContext(stateContext);
 
     const favorites = state.items.filter(item => item.isFavorite);
   
