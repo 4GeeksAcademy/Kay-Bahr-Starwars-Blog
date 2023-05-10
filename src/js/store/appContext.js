@@ -20,16 +20,17 @@ const injectContext = PassedComponent => {
 		  })
 		);
 	  
-		const addToFavorites = (title) => {
+		const addToFavorites = item => {
 		  setState({
-			store: { ...state.store, favorites: [...state.store.favorites, title] },
+			store: { ...state.store, favorites: [...state.store.favorites, item] },
 			actions: { ...state.actions }
 		  });
 		};
 	  
-		const removeFromFavorites = (title) => {
+		const removeFromFavorites = item => {
 		  setState({
-			store: { ...state.store, favorites: state.store.favorites.filter((t) => t !== title) },
+			store: { ...state.store, 
+				favorites: state.store.favorites.filter(i => i !== item) },
 			actions: { ...state.actions }
 		  });
 		};
@@ -149,7 +150,7 @@ const injectContext = PassedComponent => {
 		// the context will now have a getStore, getActions and setStore functions available, because they were declared
 		// on the state of this component
 		return (
-			<Context.Provider value={state}>
+			<Context.Provider value={stateContext}>
 				<PassedComponent {...props} />
 			</Context.Provider>
 		);

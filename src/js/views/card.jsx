@@ -1,8 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import { Context } from "../store/appContext";
 import "../../styles/card.css";
 
-export const Card = ({ title, description, url, onAddToFavorites, onRemoveFromFavorites, isFavorite }) => (
+export const Card = ({ title, description, url, isFavorite }) => {
+  const { actions } = useContext(Context);
+
+  const handleAddToFavorites = () => {
+    actions.addToFavorites(character);
+  };
+
+  const handleRemoveFromFavorites = () => {
+    actions.removeFromFavorites(character);
+  };
+
+  const isFavorite = () => {
+    return actions.store.favorites.includes(character);
+  };
+
+(
   <div className="card">
     <img src="..." className="card-img-top" alt="..." />
     <div className="card-body">
@@ -12,14 +28,15 @@ export const Card = ({ title, description, url, onAddToFavorites, onRemoveFromFa
         Learn more!
       </Link>
       {isFavorite ? (
-        <button className="btn btn-outline-danger" onClick={onRemoveFromFavorites}>
+        <button className="btn btn-outline-danger" onClick={handleRemoveFromFavorites}>
           <i className="fas fa-heart" />
         </button>
       ) : (
-        <button className="btn btn-outline-warning" onClick={onAddToFavorites}>
+        <button className="btn btn-outline-warning" onClick={handleAddToFavorites}>
           <i className="far fa-heart" />
         </button>
       )}
     </div>
   </div>
 );
+};
