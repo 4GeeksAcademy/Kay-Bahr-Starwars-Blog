@@ -11,7 +11,7 @@ export const Navbar = () => {
 			</Link>
 			<div className="ml-auto">
 			<Link to="/favorites" className="nav-link">Favorites</Link>
-			<Favorites />
+        	<Favorites />
 			</div>
 		</nav>
 	);

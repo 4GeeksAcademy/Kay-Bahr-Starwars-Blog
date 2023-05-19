@@ -9,6 +9,8 @@ import injectContext from "./store/appContext";
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 
+import { stateContext } from "./store/appContext";
+
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain
@@ -23,17 +25,19 @@ const Layout = () => {
 
 	return (
 		<div>
-			<BrowserRouter basename={basename}>
-				<ScrollToTop>
-					<Navbar favorites={favorites} removeFromFavorites={removeFromFavorites}/>
-					<Routes>
-						<Route path="/" element={<Home />} />
-						<Route path="/details" element={<Details />} />
-						<Route path="*" element={<h1>Not found!</h1>} />
-					</Routes>
-					<Footer />
-				</ScrollToTop>
-			</BrowserRouter>
+			<stateContext.Provider value={{ favorites, setFavorites }}>
+				<BrowserRouter basename={basename}>
+					<ScrollToTop>
+						<Navbar favorites={favorites} removeFromFavorites={removeFromFavorites}/>
+						<Routes>
+							<Route path="/" element={<Home />} />
+							<Route path="/details" element={<Details />} />
+							<Route path="*" element={<h1>Not found!</h1>} />
+						</Routes>
+						<Footer />
+					</ScrollToTop>
+				</BrowserRouter>
+			</stateContext.Provider>
 		</div>
 	);
 };
