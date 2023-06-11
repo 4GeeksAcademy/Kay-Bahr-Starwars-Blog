@@ -4,8 +4,7 @@ import "../../styles/home.css";
 import { Card } from "./card.jsx";
 
 export const People = () => {
-	const { store, actions } = useContext(Context);
-	const { favorites, addToFavorites, removeFromFavorites } = actions;
+	const { store } = useContext(Context);
 	return (
 	  <div className="categories">
 		<h1>Characters</h1>
@@ -15,9 +14,6 @@ export const People = () => {
 			  key={person.url}
 			  title={person.name}
 			  description={`Gender: ${person.gender}, Hair Color: ${person.hair_color}, Eye Color: ${person.eye_color}`}
-			  onAddToFavorites={() => addToFavorites(person.name)}
-			  onRemoveFromFavorites={() => removeFromFavorites(person.name)}
-			  isFavorite={favorites && favorites.includes(person.name)}
 			/>
 		  ))}
 		</div>
@@ -26,8 +22,7 @@ export const People = () => {
 };  
 
 export const Planets = () => {
-	const { store, actions } = useContext(Context);
-	const { favorites, addToFavorites, removeFromFavorites } = actions;
+	const { store } = useContext(Context);
 	return (
 		<div className="categories">
 			<h1>Planets</h1>
@@ -39,9 +34,6 @@ export const Planets = () => {
 						description=
 						{`Population: ${planet.population}, 
 						Terrain: ${planet.terrain}`}
-						onAddToFavorites={() => addToFavorites(planet.name)}
-			  			onRemoveFromFavorites={() => removeFromFavorites(planet.name)}
-			  			isFavorite={favorites.includes(planet.name)}
 					/>
 				))}
 			</div>
@@ -50,8 +42,7 @@ export const Planets = () => {
 };
 
 export const Starships = () => {
-	const { store, actions } = useContext(Context);
-	const { favorites, addToFavorites, removeFromFavorites } = actions;
+	const { store } = useContext(Context);
 	return (
 		<div className="categories">
 			<h1>Starships</h1>
@@ -63,9 +54,6 @@ export const Starships = () => {
 						description=
 						{`Model: ${starship.model}, 
 						Hyperdrive Rating: ${starship.hyperdrive_rating}`}
-						onAddToFavorites={() => addToFavorites(starship.name)}
-			  			onRemoveFromFavorites={() => removeFromFavorites(starship.name)}
-			  			isFavorite={favorites.includes(starship.name)}
 					/>
 				))}
 			</div>

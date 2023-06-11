@@ -19,29 +19,6 @@ const injectContext = PassedComponent => {
 			  })
 		  })
 		);
-	  
-		const addToFavorites = item => {
-		  setState({
-			store: { ...state.store, favorites: [...state.store.favorites, item] },
-			actions: { ...state.actions }
-		  });
-		};
-	  
-		const removeFromFavorites = item => {
-		  setState({
-			store: { ...state.store, 
-				favorites: state.store.favorites.filter(i => i !== item) },
-			actions: { ...state.actions }
-		  });
-		};
-	  
-		const stateContext = {
-		  store: state.store,
-		  actions: {
-			addToFavorites,
-			removeFromFavorites
-		  }
-		};
 		
 		useEffect(() => {
 			/**

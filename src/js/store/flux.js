@@ -4,7 +4,6 @@ const getState = () => {
 		people: [],
 		starships: [],
 		planets: [],
-		favorites: [],
 	  },
 	  actions: {
 		exampleFunction: () => {
@@ -36,16 +35,6 @@ const getState = () => {
 			  });
 			})
 			.catch((error) => console.error("Error fetching data", error));
-		},
-		addToFavorites: (item) => {
-		  const store = this.getStore();
-		  const favorites = [...store.favorites, item];
-		  this.setStore({ favorites: favorites });
-		},
-		removeFromFavorites: (item) => {
-		  const store = this.getStore();
-		  const favorites = store.favorites.filter((i) => i !== item);
-		  this.setStore({ favorites: favorites });
 		},
 	  },
 	};
