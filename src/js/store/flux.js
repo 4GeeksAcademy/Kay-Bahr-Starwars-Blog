@@ -1,4 +1,4 @@
-const getState = () => {
+export const getState = (context) => {
 	return {
 	  store: {
 		people: [],
@@ -7,7 +7,7 @@ const getState = () => {
 	  },
 	  actions: {
 		exampleFunction: () => {
-		  this.changeColor(0, "green");
+		  context.changeColor(0, "green");
 		},
 		loadSomeData: () => {
 		  Promise.all([
@@ -28,7 +28,7 @@ const getState = () => {
 				...planet,
 				id: planet.url.match(/\/(\d+)\/$/)[1],
 			  }));
-			  this.setStore({
+			  context.setStore({
 				people: peopleWithIds,
 				starships: starshipsWithIds,
 				planets: planetsWithIds,
@@ -38,7 +38,4 @@ const getState = () => {
 		},
 	  },
 	};
-  };
-  
-  export default getState;
-  
+  };  

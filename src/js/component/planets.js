@@ -1,22 +1,33 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
-import "../../styles/home.css";
-import { Card } from "/workspaces/Kay-Bahr-Starwars-Blog/src/js/views/card.jsx";
+import "../../styles/card.css";
+import { Link } from "react-router-dom";
 
 export const Planets = () => {
-	const { store } = useContext(Context);
+	const { store, actions } = useContext(Context);
+
+	useEffect(() => {
+		actions.loadSomeData();
+	}, []);
+
 	return (
 		<div className="categories">
 			<h1>Planets</h1>
 			<div className="card-container">
 				{store.planets && store.planets.map(planet => (
-					<Card
-						key={planet.url}
-						title={planet.name}
-						description=
-						{`Population: ${planet.population}, 
-						Terrain: ${planet.terrain}`}
-					/>
+					<div className="card" key={planet.url}>
+						<img src="..." className="card-img-top" alt="..." />
+						<div className="card-body">
+							<h5 className="card-title">{planet.name}</h5>
+							<p className="card-text">
+								Population: {planet.population}<br />
+								Terrain: {planet.terrain}
+							</p>
+							<Link to={`/details/${planet.url}`} className="btn btn-outline-primary">
+								Learn more!
+							</Link>
+						</div>
+					</div>
 				))}
 			</div>
 		</div>
