@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
-import { Card } from "./card.jsx";
+import { Card } from "/workspaces/Kay-Bahr-Starwars-Blog/src/js/views/card.jsx";
 
 export const Starships = () => {
 	const { store } = useContext(Context);
