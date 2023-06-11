@@ -1,8 +1,8 @@
 import React from "react";
 import "../../styles/home.css";
-import { People } from "./people.jsx";
-import { Planets } from "./planets.jsx";
-import { Starships } from "./starships.jsx";
+import { People } from "../../component/people.js";
+import { Planets } from "../../component/planets.js";
+import { Starships } from "../../component/starships.js";
 
 export const Home = () => (
 	<div className="mt-5">
