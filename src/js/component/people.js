@@ -2,6 +2,7 @@ import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/card.css";
 import { Link } from "react-router-dom";
+import { Heart } from 'react-bootstrap-icons';
 
 export const People = () => {
 	const { store, actions } = useContext(Context);
@@ -24,9 +25,10 @@ export const People = () => {
 								Hair Color: {person.hair_color}<br />
 								Eye Color: {person.eye_color}
 							</p>
-							<Link to={`/details/${person.url}`} className="btn btn-outline-primary">
+							<Link to={`/details/people/${person.url.match(/\/(\d+)\/$/)[1]}`} className="btn btn-outline-primary">
 								Learn more!
 							</Link>
+							<button className="btn btn-outline-warning me-md-2"><Heart /></button>
 						</div>
 					</div>
 				))}

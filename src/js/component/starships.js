@@ -24,7 +24,7 @@ export const Starships = () => {
 								Model: {starship.model}<br />
 								Hyperdrive Rating: {starship.hyperdrive_rating}
 							</p>
-							<Link to={`/details/${starship.url}`} className="btn btn-outline-primary">
+							<Link to={`/details/starships/${starship.url.match(/\/(\d+)\/$/)[1]}`} className="btn btn-outline-primary">
 								Learn more!
 							</Link>
 						</div>

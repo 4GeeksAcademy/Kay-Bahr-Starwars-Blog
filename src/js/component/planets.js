@@ -23,7 +23,7 @@ export const Planets = () => {
 								Population: {planet.population}<br />
 								Terrain: {planet.terrain}
 							</p>
-							<Link to={`/details/${planet.url}`} className="btn btn-outline-primary">
+							<Link to={`/details/planets/${planet.url.match(/\/(\d+)\/$/)[1]}`} className="btn btn-outline-primary">
 								Learn more!
 							</Link>
 						</div>
