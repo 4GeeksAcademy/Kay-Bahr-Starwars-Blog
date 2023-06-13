@@ -17,14 +17,22 @@ const Layout = () => {
 	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
 	const basename = process.env.BASENAME || "";
 
+	const [favorites, setFavorites] = useState([]);
+
+	const handleRemoveFavorite = (index) => {
+		const newFavorites = [...favorites];
+		newFavorites.splice(index, 1);
+		setFavorites(newFavorites);
+	};
+
 	return (
 		<div>
 			<stateContext.Provider >
 				<BrowserRouter basename={basename}>
 					<ScrollToTop>
-						<Navbar />
+						<Navbar fav={favorites} />
 						<Routes>
-							<Route path="/" element={<Home />} />
+							<Route path="/" element={<Home/>} />
 							<Route path="/details/*" element={<Details />} />
 							<Route path="*" element={<h1>Not found!</h1>} />
 						</Routes>

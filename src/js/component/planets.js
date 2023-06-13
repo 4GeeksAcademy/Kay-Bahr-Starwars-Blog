@@ -1,7 +1,8 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/card.css";
 import { Link } from "react-router-dom";
+import { Heart } from 'react-bootstrap-icons';
 
 export const Planets = () => {
 	const { store, actions } = useContext(Context);
@@ -9,6 +10,16 @@ export const Planets = () => {
 	useEffect(() => {
 		actions.loadSomeData();
 	}, []);
+
+	const [favValue, setFavValue] = useState("");
+	const [fav, setFav] = useState([]);
+
+	const handleKeyDown = (e) => {
+		if (e.key === "Enter") {
+			setFav([...fav, favValue]);
+			setFavValue("");
+		}
+	};
 
 	return (
 		<div className="categories">
@@ -26,6 +37,14 @@ export const Planets = () => {
 							<Link to={`/details/planets/${planet.url.match(/\/(\d+)\/$/)[1]}`} className="btn btn-outline-primary">
 								Learn more!
 							</Link>
+							<button
+								className="btn btn-outline-warning me-md-2"
+								onClick={() => {
+									setFav([...fav, planet.name]);
+								}}
+							>
+								<Heart />
+							</button>
 						</div>
 					</div>
 				))}

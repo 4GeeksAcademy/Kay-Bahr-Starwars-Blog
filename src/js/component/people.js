@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/card.css";
 import { Link } from "react-router-dom";
@@ -10,6 +10,16 @@ export const People = () => {
 	useEffect(() => {
 		actions.loadSomeData();
 	}, []);
+
+	const [favValue, setFavValue] = useState("");
+	const [fav, setFav] = useState([]);
+
+	const handleKeyDown = (e) => {
+		if (e.key === "Enter") {
+			setFav([...fav, favValue]);
+			setFavValue("");
+		}
+	};
 
 	return (
 	  <div className="categories">
@@ -28,7 +38,14 @@ export const People = () => {
 							<Link to={`/details/people/${person.url.match(/\/(\d+)\/$/)[1]}`} className="btn btn-outline-primary">
 								Learn more!
 							</Link>
-							<button className="btn btn-outline-warning me-md-2"><Heart /></button>
+							<button
+								className="btn btn-outline-warning me-md-2"
+								onClick={() => {
+									setFav([...fav, person.name]);
+								}}
+							>
+								<Heart />
+							</button>
 						</div>
 					</div>
 				))}
