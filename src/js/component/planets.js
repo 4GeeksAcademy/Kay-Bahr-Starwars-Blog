@@ -4,22 +4,20 @@ import "../../styles/card.css";
 import { Link } from "react-router-dom";
 import { Heart } from 'react-bootstrap-icons';
 
-export const Planets = () => {
+export const Planets = ({ fav, setFav, handleRemove }) => {
 	const { store, actions } = useContext(Context);
 
 	useEffect(() => {
 		actions.loadSomeData();
 	}, []);
 
-	const [favValue, setFavValue] = useState("");
-	const [fav, setFav] = useState([]);
-
-	const handleKeyDown = (e) => {
-		if (e.key === "Enter") {
-			setFav([...fav, favValue]);
-			setFavValue("");
+	const handleFavorite = (planet) => {
+		if (fav.includes(planet.name)) {
+			handleRemove(planet.name);
+		} else {
+			setFav([...fav, planet.name]);
 		}
-	};
+	}; 
 
 	return (
 		<div className="categories">
@@ -39,13 +37,7 @@ export const Planets = () => {
 							</Link>
 							<button
 								className="btn btn-outline-warning me-md-2"
-								onClick={() => {
-									if (fav.includes(planet.name)) {
-										setFav(fav.filter((item) => item !== planet.name));
-									} else {
-										setFav([...fav, planet.name]);
-									}
-								}}
+								onClick={() => handleFavorite(planet)}						
 							>
 								<Heart />
 							</button>

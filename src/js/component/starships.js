@@ -5,22 +5,20 @@ import { Link } from "react-router-dom";
 import { Heart } from 'react-bootstrap-icons';
 
 
-export const Starships = () => {
+export const Starships = ({ fav, setFav, handleRemove }) => {
 	const { store, actions } = useContext(Context);
 
 	useEffect(() => {
 		actions.loadSomeData();
 	}, []);
 
-	const [favValue, setFavValue] = useState("");
-	const [fav, setFav] = useState([]);
-
-	const handleKeyDown = (e) => {
-		if (e.key === "Enter") {
-			setFav([...fav, favValue]);
-			setFavValue("");
+	const handleFavorite = (starship) => {
+		if (fav.includes(starship.name)) {
+			handleRemove(starship.name);
+		} else {
+			setFav([...fav, starship.name]);
 		}
-	};
+	}; 
 
 	return (
 		<div className="categories">
@@ -40,13 +38,7 @@ export const Starships = () => {
 							</Link>
 							<button
 								className="btn btn-outline-warning me-md-2"
-								onClick={() => {
-									if (fav.includes(starship.name)) {
-										setFav(fav.filter((item) => item !== starship.name));
-									} else {
-										setFav([...fav, starship.name]);
-									}
-								}}
+								onClick={() => handleFavorite(starship)}						
 							>
 								<Heart />
 							</button>

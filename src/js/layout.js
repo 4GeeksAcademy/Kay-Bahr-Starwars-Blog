@@ -19,14 +19,20 @@ const Layout = () => {
 
 	const [fav, setFav] = useState([]);
 
+	const handleRemove = (item) => {
+		const updatedFavorites = fav.filter((favItem) => favItem !== item);
+		setFav(updatedFavorites); // Assuming you have a function called handleSetFavorites to update the favorites list
+	};
+	  
+
 	return (
 		<div>
 			<stateContext.Provider value={{ fav, setFav }}>
 				<BrowserRouter basename={basename}>
 					<ScrollToTop>
-						<Navbar fav={fav} handleRemove={setFav}/>
+						<Navbar fav={fav} handleRemove={handleRemove}/>
 						<Routes>
-							<Route path="/" element={<Home fav={fav} setFav={setFav} handleRemove={setFav} />} />
+							<Route path="/" element={<Home fav={fav} setFav={setFav} handleRemove={handleRemove} />} />
 							<Route path="/details/*" element={<Details />} />
 							<Route path="*" element={<h1>Not found!</h1>} />
 						</Routes>

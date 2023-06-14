@@ -7,7 +7,7 @@ import { Starships } from "/workspaces/Kay-Bahr-Starwars-Blog/src/js/component/s
 export const Home = ({ fav, setFav, handleRemove }) => (
 	<div className="mt-5">
 		<People fav={fav} setFav={setFav} handleRemove={handleRemove} />
-		<Planets />
-		<Starships />
+		<Planets fav={fav} setFav={setFav} handleRemove={handleRemove} />
+		<Starships fav={fav} setFav={setFav} handleRemove={handleRemove} />
 	</div>
 );
