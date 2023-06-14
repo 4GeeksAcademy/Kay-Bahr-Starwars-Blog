@@ -40,7 +40,11 @@ export const Planets = () => {
 							<button
 								className="btn btn-outline-warning me-md-2"
 								onClick={() => {
-									setFav([...fav, planet.name]);
+									if (fav.includes(planet.name)) {
+										setFav(fav.filter((item) => item !== planet.name));
+									} else {
+										setFav([...fav, planet.name]);
+									}
 								}}
 							>
 								<Heart />

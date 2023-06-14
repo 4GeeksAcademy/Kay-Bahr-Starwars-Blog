@@ -41,7 +41,11 @@ export const Starships = () => {
 							<button
 								className="btn btn-outline-warning me-md-2"
 								onClick={() => {
-									setFav([...fav, starship.name]);
+									if (fav.includes(starship.name)) {
+										setFav(fav.filter((item) => item !== starship.name));
+									} else {
+										setFav([...fav, starship.name]);
+									}
 								}}
 							>
 								<Heart />

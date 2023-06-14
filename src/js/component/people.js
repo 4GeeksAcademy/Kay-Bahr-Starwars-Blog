@@ -4,22 +4,20 @@ import "../../styles/card.css";
 import { Link } from "react-router-dom";
 import { Heart } from 'react-bootstrap-icons';
 
-export const People = () => {
+export const People = ({ fav, setFav, handleRemove }) => {
 	const { store, actions } = useContext(Context);
 
 	useEffect(() => {
 		actions.loadSomeData();
 	}, []);
 
-	const [favValue, setFavValue] = useState("");
-	const [fav, setFav] = useState([]);
-
-	const handleKeyDown = (e) => {
-		if (e.key === "Enter") {
-			setFav([...fav, favValue]);
-			setFavValue("");
+	const handleFavorite = (person) => {
+		if (fav.includes(person.name)) {
+			handleRemove(person.name);
+		} else {
+			setFav([...fav, person.name]);
 		}
-	};
+	};  
 
 	return (
 	  <div className="categories">
@@ -35,14 +33,14 @@ export const People = () => {
 								Hair Color: {person.hair_color}<br />
 								Eye Color: {person.eye_color}
 							</p>
-							<Link to={`/details/people/${person.url.match(/\/(\d+)\/$/)[1]}`} className="btn btn-outline-primary">
+							<Link to={`/details/people/${person.url.match(/\/(\d+)\/$/)[1]}`} 
+								className="btn btn-outline-primary"
+							>
 								Learn more!
 							</Link>
 							<button
 								className="btn btn-outline-warning me-md-2"
-								onClick={() => {
-									setFav([...fav, person.name]);
-								}}
+								onClick={() => handleFavorite(person)}						
 							>
 								<Heart />
 							</button>
