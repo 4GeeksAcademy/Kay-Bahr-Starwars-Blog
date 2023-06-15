@@ -19,25 +19,56 @@ export const PlanetDetails = () => {
 
     return (
         <div className="detailsBody">
-            <img src="..." className="card-img-top" alt={planet.name} />
-            <div className="detailsProfile">
-                <h2>{planet.name}</h2>
-                <p>Suspendisse potenti. Proin nisl orci, tincidunt sit amet efficitur non, mattis ut odio. Ut vitae placerat turpis, sit amet sodales est. Sed consectetur leo et eros dictum, eget mattis nisi pretium. Aenean condimentum arcu nisl, vitae ornare eros vehicula nec. Nunc lacinia luctus porta. Cras sit amet odio non lacus posuere feugiat sed id lorem. Suspendisse gravida accumsan libero a laoreet. Vestibulum egestas egestas purus, vitae dictum neque feugiat iaculis. Nullam mattis rhoncus ipsum, mattis blandit lectus interdum non. Fusce bibendum mauris in lorem finibus volutpat. Integer ornare accumsan aliquam. Maecenas viverra nulla in diam maximus pellentesque. Mauris eu ex ac magna pulvinar tristique sit amet in ex. Mauris iaculis aliquam mi, eu ultrices lacus vulputate eu.</p>
+            <div className="detailsContainer">
+                <img src="..." className="detailsImg" alt={planet.name} />
+                <div className="detailsProfile">
+                    <h2>{planet.name}</h2>
+                    <p>
+                        Suspendisse potenti. Proin nisl orci, tincidunt sit amet efficitur non, mattis ut odio. 
+                        Ut vitae placerat turpis, sit amet sodales est. Sed consectetur leo et eros dictum, eget mattis nisi pretium. 
+                        Aenean condimentum arcu nisl, vitae ornare eros vehicula nec. Nunc lacinia luctus porta. 
+                        Cras sit amet odio non lacus posuere feugiat sed id lorem.
+                        Ut vitae placerat turpis, sit amet sodales est. Sed consectetur leo et eros dictum, eget mattis nisi pretium. 
+                        Aenean condimentum arcu nisl, vitae ornare eros vehicula nec. Nunc lacinia luctus porta. 
+                    </p>
+                </div>
             </div>
             <div className="detailsBio">
-                <hr />
+                <hr className="hrLine" />
                 <p>
-                    {`Name: ${planet.name}`}
+                    Name
+                    <br/>
+                    {`${planet.name}`}
+                </p>
                     <br />
-                    {`Climate: ${planet.climate}`}
+                <p>
+                    Climate
+                    <br/>
+                    {`${planet.climate}`}
+                </p>
                     <br />
-                    {`Population: ${planet.population}`}
+                <p>
+                    Population
+                    <br/>
+                    {`${planet.population}`}
+                </p>
                     <br />
-                    {`Orbital Period: ${planet.orbital_period}`}
+                <p>
+                    Orbital Period
+                    <br/>
+                    {`${planet.orbital_period}`}
+                </p>
                     <br />
-                    {`Rotation Period: ${planet.rotation_period}`}
+                <p>
+                    Rotation Period
+                    <br/>
+                    {`${planet.rotation_period}`}
+                </p>
                     <br />
-                    {`Diameter: ${planet.diameter}`}
+                <p>
+                    Diameter
+                    <br/>
+                    {`${planet.diameter}`}
                 </p>
             </div>
         </div>

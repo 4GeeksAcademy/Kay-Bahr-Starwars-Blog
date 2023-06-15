@@ -19,25 +19,57 @@ export const Details = () => {
 
     return (
         <div className="detailsBody">
-            <img src="..." className="card-img-top" alt={person.name} />
-            <div className="detailsProfile">
-                <h2>{person.name}</h2>
-                <p>Suspendisse potenti. Proin nisl orci, tincidunt sit amet efficitur non, mattis ut odio. Ut vitae placerat turpis, sit amet sodales est. Sed consectetur leo et eros dictum, eget mattis nisi pretium. Aenean condimentum arcu nisl, vitae ornare eros vehicula nec. Nunc lacinia luctus porta. Cras sit amet odio non lacus posuere feugiat sed id lorem. Suspendisse gravida accumsan libero a laoreet. Vestibulum egestas egestas purus, vitae dictum neque feugiat iaculis. Nullam mattis rhoncus ipsum, mattis blandit lectus interdum non. Fusce bibendum mauris in lorem finibus volutpat. Integer ornare accumsan aliquam. Maecenas viverra nulla in diam maximus pellentesque. Mauris eu ex ac magna pulvinar tristique sit amet in ex. Mauris iaculis aliquam mi, eu ultrices lacus vulputate eu.</p>
+            <div className="detailsContainer">
+                <img src="..." className="detailsImg" alt={person.name} />
+                <div className="detailsProfile">
+                    <h2>{person.name}</h2>
+                    <p>
+                        Suspendisse potenti. Proin nisl orci, tincidunt sit amet efficitur non, mattis ut odio. 
+                        Ut vitae placerat turpis, sit amet sodales est. 
+                        Sed consectetur leo et eros dictum, eget mattis nisi pretium. 
+                        Aenean condimentum arcu nisl, vitae ornare eros vehicula nec. Nunc lacinia luctus porta. 
+                        Cras sit amet odio non lacus posuere feugiat sed id lorem.
+                        Ut vitae placerat turpis, sit amet sodales est. Sed consectetur leo et eros dictum, eget mattis nisi pretium. 
+                        Aenean condimentum arcu nisl, vitae ornare eros vehicula nec. Nunc lacinia luctus porta. 
+                    </p>
+                </div>
             </div>
             <div className="detailsBio">
-                <hr />
+                <hr className="hrLine" />
                 <p>
-                    {`Name: ${person.name}`}
+                    Name
+                    <br/>
+                    {`${person.name}`}
+                </p>
                     <br />
-                    {`Birth Year: ${person.birth_year}`}
+                <p>
+                    Birth Year
+                    <br/>
+                    {`${person.birth_year}`}
+                </p>
                     <br />
-                    {`Gender: ${person.gender}`}
+                <p>
+                    Gender
+                    <br/>
+                    {`${person.gender}`}
+                </p>
                     <br />
-                    {`Height: ${person.height}`}
+                <p>
+                    Height
+                    <br/>
+                    {`${person.height}`}
+                </p>
                     <br />
-                    {`Skin Color: ${person.skin_color}`}
+                <p>
+                    Skin Color
+                    <br/>
+                    {`${person.skin_color}`}
+                </p>
                     <br />
-                    {`Eye Color: ${person.eye_color}`}
+                <p>
+                    Eye Color
+                    <br/>
+                    {`${person.eye_color}`}
                 </p>
             </div>
         </div>

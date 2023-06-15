@@ -19,25 +19,56 @@ export const StarshipDetails = () => {
 
     return (
         <div className="detailsBody">
-            <img src="..." className="card-img-top" alt={starship.name} />
-            <div className="detailsProfile">
-                <h2>{starship.name}</h2>
-                <p>Suspendisse potenti. Proin nisl orci, tincidunt sit amet efficitur non, mattis ut odio. Ut vitae placerat turpis, sit amet sodales est. Sed consectetur leo et eros dictum, eget mattis nisi pretium. Aenean condimentum arcu nisl, vitae ornare eros vehicula nec. Nunc lacinia luctus porta. Cras sit amet odio non lacus posuere feugiat sed id lorem. Suspendisse gravida accumsan libero a laoreet. Vestibulum egestas egestas purus, vitae dictum neque feugiat iaculis. Nullam mattis rhoncus ipsum, mattis blandit lectus interdum non. Fusce bibendum mauris in lorem finibus volutpat. Integer ornare accumsan aliquam. Maecenas viverra nulla in diam maximus pellentesque. Mauris eu ex ac magna pulvinar tristique sit amet in ex. Mauris iaculis aliquam mi, eu ultrices lacus vulputate eu.</p>
+            <div className="detailsContainer">
+                <img src="..." className="detailsImg" alt={starship.name} />
+                <div className="detailsProfile">
+                    <h2>{starship.name}</h2>
+                    <p>
+                        Suspendisse potenti. Proin nisl orci, tincidunt sit amet efficitur non, mattis ut odio. 
+                        Ut vitae placerat turpis, sit amet sodales est. Sed consectetur leo et eros dictum, eget mattis nisi pretium. 
+                        Aenean condimentum arcu nisl, vitae ornare eros vehicula nec. Nunc lacinia luctus porta. 
+                        Cras sit amet odio non lacus posuere feugiat sed id lorem.
+                        Ut vitae placerat turpis, sit amet sodales est. Sed consectetur leo et eros dictum, eget mattis nisi pretium. 
+                        Aenean condimentum arcu nisl, vitae ornare eros vehicula nec. Nunc lacinia luctus porta. 
+                    </p>
+                </div>
             </div>
             <div className="detailsBio">
-                <hr />
+                <hr className="hrLine" />
                 <p>
-                    {`Name: ${starship.name}`}
+                    Name
+                    <br/>
+                    {`${starship.name}`}
+                </p>
                     <br />
-                    {`Model: ${starship.model}`}
+                <p>
+                    Model
+                    <br/>
+                    {`${starship.model}`}
+                </p>
                     <br />
-                    {`Hyperdrive Rating: ${starship.hyperdrive_rating}`}
+                <p>
+                    Hyperdrive Rating
+                    <br/>
+                    {`${starship.hyperdrive_rating}`}
+                </p>
                     <br />
-                    {`Length: ${starship.length}`}
+                <p>
+                    Length
+                    <br/>
+                    {`${starship.length}`}
+                </p>
                     <br />
-                    {`Crew: ${starship.crew}`}
+                <p>
+                    Crew
+                    <br/>
+                    {`${starship.crew}`}
+                </p>
                     <br />
-                    {`Passengers: ${starship.passengers}`}
+                <p>
+                    Passengers
+                    <br/>
+                    {`${starship.passengers}`}
                 </p>
             </div>
         </div>
