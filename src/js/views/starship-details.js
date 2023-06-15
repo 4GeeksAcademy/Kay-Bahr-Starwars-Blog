@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/details.css";
 
-export const Details = () => {
+export const StarshipDetails = () => {
     const { store } = useContext(Context);
     const { id, category } = useParams();
     const [data, setData] = useState(null);
@@ -22,27 +22,29 @@ export const Details = () => {
                 <>
                     <img src="..." className="card-img-top" alt={data.name} />
                     <div className="detailsProfile">
-                        <h2>{data.name}</h2>
-                        <p>{`${data.description}`}</p>
+                        <h2>{store.starships.name}</h2>
+                        <p>
+                            {`${store.starships.description}`}
+                        </p>
                     </div>
                     <div className="detailsBio">
                         <hr />
                         <p>
-                            {`Name: ${data.name}`}
-                            <br />
-                            {`Birth Year: ${data.birth_year}`}
-                            <br />
-                            {`Gender: ${data.gender}`}
-                            <br />
-                            {`Height: ${data.height}`}
-                            <br />
-                            {`Skin Color: ${data.skin_color}`}
-                            <br />
-                            {`Eye Color: ${data.eye_color}`}
+                        {`Name: ${store.starships.name}`}
+                        <br />
+                        {`Model: ${store.starships.model}`}
+                        <br />
+                        {`Hyperdrive Rating: ${store.starships.hyperdrive_rating}`}
+                        <br />
+                        {`Length: ${store.starships.length}`}
+                        <br />
+                        {`Crew: ${store.starships.crew}`}
+                        <br />
+                        {`Passengers: ${store.starships.passengers}`}
                         </p>
                     </div>
                 </>
             )}
         </div>
-    );    
+    );     
 };

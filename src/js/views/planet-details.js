@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/details.css";
 
-export const Details = () => {
+export const PlanetDetails = () => {
     const { store } = useContext(Context);
     const { id, category } = useParams();
     const [data, setData] = useState(null);
@@ -23,26 +23,28 @@ export const Details = () => {
                     <img src="..." className="card-img-top" alt={data.name} />
                     <div className="detailsProfile">
                         <h2>{data.name}</h2>
-                        <p>{`${data.description}`}</p>
+                        <p>
+                            {`${data.description}`}
+                        </p>
                     </div>
                     <div className="detailsBio">
                         <hr />
                         <p>
                             {`Name: ${data.name}`}
                             <br />
-                            {`Birth Year: ${data.birth_year}`}
+                            {`Climate: ${data.climate}`}
                             <br />
-                            {`Gender: ${data.gender}`}
+                            {`Population: ${data.population}`}
                             <br />
-                            {`Height: ${data.height}`}
+                            {`Orbital Period: ${data.orbital_period}`}
                             <br />
-                            {`Skin Color: ${data.skin_color}`}
+                            {`Rotation Period: ${data.rotation_period}`}
                             <br />
-                            {`Eye Color: ${data.eye_color}`}
+                            {`Diameter: ${data.diameter}`}
                         </p>
                     </div>
                 </>
             )}
         </div>
-    );    
+    );
 };

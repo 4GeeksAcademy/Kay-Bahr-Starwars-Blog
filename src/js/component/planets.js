@@ -32,7 +32,7 @@ export const Planets = ({ fav, setFav, handleRemove }) => {
 								Population: {planet.population}<br />
 								Terrain: {planet.terrain}
 							</p>
-							<Link to={`/details/planets/${planet.url.match(/\/(\d+)\/$/)[1]}`} className="btn btn-outline-primary">
+							<Link to={`/planet_details/${planet.url.match(/\/(\d+)\/$/)[1]}`} className="btn btn-outline-primary">
 								Learn more!
 							</Link>
 							<button
