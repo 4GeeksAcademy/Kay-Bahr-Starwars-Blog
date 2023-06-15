@@ -33,7 +33,7 @@ export const People = ({ fav, setFav, handleRemove }) => {
 								Hair Color: {person.hair_color}<br />
 								Eye Color: {person.eye_color}
 							</p>
-							<Link to={`/details/${person.url.match(/\/(\d+)\/$/)[1]}`} 
+							<Link to={`/details/${person.id}`} 
 								className="btn btn-outline-primary"
 							>
 								Learn more!

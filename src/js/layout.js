@@ -35,9 +35,9 @@ const Layout = () => {
 						<Navbar fav={fav} handleRemove={handleRemove}/>
 						<Routes>
 							<Route path="/" element={<Home fav={fav} setFav={setFav} handleRemove={handleRemove} />} />
-							<Route path="/details/*" element={<Details />} />
-							<Route path="/planet_details/*" element={<PlanetDetails />} />
-							<Route path="/starship_details/*" element={<StarshipDetails />} />
+							<Route path="/details/:id" element={<Details />} />
+							<Route path="/planet_details/:id" element={<PlanetDetails />} />
+							<Route path="/starship_details/:id" element={<StarshipDetails />} />
 							<Route path="*" element={<h1>Not found!</h1>} />
 						</Routes>
 						<Footer />
